@@ -8,6 +8,7 @@ public partial class ComtradeContext
 {
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder)
     {
+        //Agent
         var agent = new Agent()
         {
             Id = 1,
@@ -21,6 +22,7 @@ public partial class ComtradeContext
 
         modelBuilder.Entity<Agent>().HasData(agent);
 
+        //Campaign
         modelBuilder.Entity<Campaign>().HasData(
             new Campaign()
             {
@@ -29,18 +31,6 @@ public partial class ComtradeContext
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now + TimeSpan.FromDays(30),
                 Discount = 10,
-            }
-        );
-        
-        modelBuilder.Entity<RewardedCustomer>().HasData(
-            new RewardedCustomer()
-            {
-                Id = 1,
-                Ssn = "4sdfs56d9ed", 
-                RewardDate = DateTime.Now,
-                AgentId = 1,
-                CampaignId = 1,
-                UsedReward = false
             }
         );
         

@@ -44,20 +44,38 @@ namespace CustomerServiceCampaign.Repositories
             {
                 var customerPurchases = customers.Where(c => c.CustomerSSN == rewardedCustomer.Ssn && c.PurchaseDate > rewardedCustomer.RewardDate);
 
-                var oldestPurchaseAfterRewardDate = customerPurchases.OrderBy(c => c.PurchaseDate).FirstOrDefault();
-
-                var reportModel = new ReportModel
+                if (customerPurchases.Any())
                 {
-                    CustomerSSN = rewardedCustomer.Ssn,
-                    AgentId = rewardedCustomer.AgentId,
-                    CampaignId = rewardedCustomer.CampaignId,
-                    RewardDate = rewardedCustomer.RewardDate,
-                    UsedReward = rewardedCustomer.UsedReward,
-                    PurchaseId = oldestPurchaseAfterRewardDate?.PurchaseId 
-                };
+                    var oldestPurchaseAfterRewardDate = customerPurchases.OrderBy(c => c.PurchaseDate).FirstOrDefault();
 
-                report.Add(reportModel);
+                    var reportModel = new ReportModel
+                    {
+                        CustomerSSN = rewardedCustomer.Ssn,
+                        AgentId = rewardedCustomer.AgentId,
+                        CampaignId = rewardedCustomer.CampaignId,
+                        RewardDate = rewardedCustomer.RewardDate,
+                        UsedReward = rewardedCustomer.UsedReward,
+                        PurchaseId = oldestPurchaseAfterRewardDate?.PurchaseId
+                    };
+
+                    report.Add(reportModel);
+                }
+                else
+                {
+                    var reportModel = new ReportModel
+                    {
+                        CustomerSSN = rewardedCustomer.Ssn,
+                        AgentId = rewardedCustomer.AgentId,
+                        CampaignId = rewardedCustomer.CampaignId,
+                        RewardDate = rewardedCustomer.RewardDate,
+                        UsedReward = rewardedCustomer.UsedReward,
+                        PurchaseId = null
+                    };
+
+                    report.Add(reportModel);
+                }
             }
+
 
 
             return report;
