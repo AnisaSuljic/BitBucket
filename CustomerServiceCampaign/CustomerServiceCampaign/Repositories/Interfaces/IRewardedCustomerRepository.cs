@@ -8,7 +8,7 @@ namespace CustomerServiceCampaign.Repositories.Interfaces
         RewardedCustomer RewardCustomer(RewardedCustomer customer);
         bool AlreadyRewarded(string customerSSN, int campaignId);
 
-        List<ReportModel> CampaignResults(int campaignId, List<CustomerCSV> customers, DateTime campaignEndDate);
+        List<ReportModel> CampaignResults(int campaignId, List<CustomerCSV> customers);
 
     }
 }

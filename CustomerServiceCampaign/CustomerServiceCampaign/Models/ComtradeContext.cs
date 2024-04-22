@@ -21,9 +21,9 @@ public partial class ComtradeContext : DbContext
 
     public virtual DbSet<RewardedCustomer> RewardedCustomers { get; set; }
 
-//    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-//        => optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=Comtrade;Trusted_Connection=True;Encrypt=False;");
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=Comtrade;Trusted_Connection=True;Encrypt=False;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -55,10 +55,13 @@ public partial class ComtradeContext : DbContext
 
             entity.ToTable("RewardedCustomer");
 
+            entity.HasIndex(e => e.AgentId, "IX_RewardedCustomer_AgentId");
+
+            entity.HasIndex(e => e.CampaignId, "IX_RewardedCustomer_CampaignId");
+
             entity.Property(e => e.Ssn)
                 .HasMaxLength(255)
                 .HasColumnName("SSN");
-            entity.Property(e => e.UsedReward).HasDefaultValue(false);
 
             entity.HasOne(d => d.Agent).WithMany(p => p.RewardedCustomers)
                 .HasForeignKey(d => d.AgentId)

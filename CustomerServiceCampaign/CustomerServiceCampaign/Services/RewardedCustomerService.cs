@@ -38,21 +38,23 @@ namespace CustomerServiceCampaign.Services
                     var customerSSN = csv.GetField("CustomerSSN");
                     var purchaseDate = csv.GetField("PurchaseDate");
                     var purchaseAmount = csv.GetField("PurchaseAmount");
+                    var purchaseId = csv.GetField("PurchaseId");
 
                     var customer = new CustomerCSV
                     {
                         Id = id,
                         CustomerSSN = customerSSN,
                         PurchaseDate = DateTime.Parse(purchaseDate),
-                        PurchaseAmount = float.Parse(purchaseAmount)
+                        PurchaseAmount = float.Parse(purchaseAmount),
+                        PurchaseId = int.Parse(purchaseId)
                     };
 
                     customers.Add(customer);
                 }
             }
-            DateTime campaignEndDate = _campaignRepository.GetById(campaignId).EndDate;
+            //DateTime campaignEndDate = _campaignRepository.GetById(campaignId).EndDate;
 
-            var reportResult = _rewardedCustomerRepository.CampaignResults(campaignId, customers, campaignEndDate);
+            var reportResult = _rewardedCustomerRepository.CampaignResults(campaignId, customers);
 
             return reportResult;
         }

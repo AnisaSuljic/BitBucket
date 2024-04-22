@@ -15,7 +15,7 @@ public partial class RewardedCustomer
 
     public DateTime RewardDate { get; set; }
 
-    public bool? UsedReward { get; set; }
+    public bool UsedReward { get; set; }
 
     public virtual Agent Agent { get; set; } = null!;
 
