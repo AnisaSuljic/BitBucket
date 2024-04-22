@@ -52,7 +52,6 @@ namespace CustomerServiceCampaign.Services
                     customers.Add(customer);
                 }
             }
-            //DateTime campaignEndDate = _campaignRepository.GetById(campaignId).EndDate;
 
             var reportResult = _rewardedCustomerRepository.CampaignResults(campaignId, customers);
 
