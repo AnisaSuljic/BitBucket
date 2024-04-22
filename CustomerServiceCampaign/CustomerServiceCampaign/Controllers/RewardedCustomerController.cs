@@ -3,6 +3,7 @@ using CsvHelper.Configuration;
 using CustomerServiceCampaign.DTOs;
 using CustomerServiceCampaign.Repositories.Interfaces;
 using CustomerServiceCampaign.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Formats.Asn1;
 using System.Globalization;
@@ -11,7 +12,7 @@ namespace CustomerServiceCampaign.Controllers
 {   
     [ApiController]
     [Route("api/[controller]")]
-    //[Authorize]
+    [Authorize]
     public class RewardedCustomerController : Controller
     {
         private readonly IRewardedCustomerService _rewardedCustomerService;

@@ -12,7 +12,5 @@ namespace CustomerServiceCampaign.DTOs
 
         public double Discount { get; set; }
 
-        public List<RewardedCustomerDTO> RewardedCustomers { get; set; }
-
     }
 }

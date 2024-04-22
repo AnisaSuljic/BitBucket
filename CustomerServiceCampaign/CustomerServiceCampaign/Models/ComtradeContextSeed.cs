@@ -34,6 +34,67 @@ public partial class ComtradeContext
             }
         );
         
+        //RewardedCustomers
+        modelBuilder.Entity<RewardedCustomer>().HasData(
+            new RewardedCustomer()
+            {
+                Id = 1,
+                Ssn = "356-13-3072", 
+                AgentId = 1,
+                CampaignId = 1,
+                RewardDate = DateTime.Parse("2024-04-21 00:00:00.0000000"),
+                UsedReward = false
+            }
+        );
+
+        modelBuilder.Entity<RewardedCustomer>().HasData(
+            new RewardedCustomer()
+            {
+                Id = 2,
+                Ssn = "659-19-2190",
+                AgentId = 1,
+                CampaignId = 1,
+                RewardDate = DateTime.Parse("2024-04-19 00:00:00.0000000"),
+                UsedReward = false
+            }
+        );
+        
+        modelBuilder.Entity<RewardedCustomer>().HasData(
+            new RewardedCustomer()
+            {
+                Id = 3,
+                Ssn = "850-53-6279",
+                AgentId = 1,
+                CampaignId = 1,
+                RewardDate = DateTime.Parse("2024-04-20 00:00:00.0000000"),
+                UsedReward = false
+            }
+        );
+
+         modelBuilder.Entity<RewardedCustomer>().HasData(
+            new RewardedCustomer()
+            {
+                Id = 4,
+                Ssn = "735-10-3297",
+                AgentId = 1,
+                CampaignId = 1,
+                RewardDate = DateTime.Parse("2024-04-22 00:00:00.0000000"),
+                UsedReward = false
+            }
+        );
+        
+        modelBuilder.Entity<RewardedCustomer>().HasData(
+            new RewardedCustomer()
+            {
+                Id = 5,
+                Ssn = "850-53-6566",
+                AgentId = 1,
+                CampaignId = 1,
+                RewardDate = DateTime.Parse("2024-04-20 00:00:00.0000000"),
+                UsedReward = false
+            }
+        );
+
     }
 
 }

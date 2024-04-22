@@ -7,7 +7,7 @@ namespace CustomerServiceCampaign.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    //[Authorize]
+    [Authorize]
     public class CampaignController : Controller
     {
         private readonly ICampaignService _campaignService;

@@ -1,5 +1,6 @@
 ﻿using CustomerServiceCampaign.DTOs;
 using CustomerServiceCampaign.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Text;
 
@@ -7,7 +8,7 @@ namespace CustomerServiceCampaign.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    //[Authorize]
+    [Authorize]
     public class AgentController : Controller
     {
         private readonly IAgentService _agentService;
